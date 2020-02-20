@@ -20,7 +20,10 @@ public class RPiBluetoothService {
     private static final String TAG = "Raspberry Pi Bluetooth handler"; //for debug messages
 
     //UUID for the server
-    private static final UUID uuid = UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee");
+    //HC-05 UUID = "00001101-0000-1000-8000-00805F9B34FB"
+    private static final UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    //RPi
+    //private static final UUID uuid = UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee");
 
     private final BluetoothAdapter mAdapter;
     private final Handler mHandler; //communication between bluetooth and UI thread

@@ -11,6 +11,7 @@ client -> server
 		- QUERY
 			- This causes the server to execute a query, returning all data more recent than the date provided
 			- The date is provided in three more fields (year, month, day) in the JSON
+			- Three additional optional parameters, (hour, minute, second) can be used as well
 		- END
 			- This causes the server to disconnect
 	
@@ -26,8 +27,20 @@ client -> server
 		"request": "QUERY",
 		"year": 2019,
 		"month": 10,
-		"day": 21,
+		"day": 21
 	}
+	
+	//this causes the server to send all data from October 21st, 2019, 12:15PM onwards
+	{ 
+		"request": "QUERY",
+		"year": 2019,
+		"month": 10,
+		"day": 21,
+		"hour": 12,
+		"minute": 15,
+		"second": 0
+	}
+	
 
 	//this causes the server to close the connection
 	{ 

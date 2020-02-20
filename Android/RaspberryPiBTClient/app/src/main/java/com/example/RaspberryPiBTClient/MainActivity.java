@@ -363,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
                 String deviceName = device.getName();
                 String deviceMacAddress = device.getAddress();
 //                String displayText = "Paired device: " + deviceName + " - " + deviceMacAddress;
-                if (deviceName.equals("elderberry")) {
+                if (deviceName.equals("HC-05")) {
                     serverDevice = device;
 //                    displayText += " (!)";
                 }
