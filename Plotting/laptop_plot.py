@@ -1,16 +1,20 @@
 from pathlib import Path
 from hashlib import md5
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import operator
 import time
 import datetime
 
 BLOCKSIZE = 65536
+NUM_POINTS_TO_DISPLAY = 50 #change how many points will show in a graph here
 
 drive_dir = 'C:\\Users\\User\Google Drive'
 
 last_scanned_files = []
 datapoints = []
+
+# TODO: modify this to support multiple stations (change datapoints to a dict of lists)
 
 class DataPoint:
     """A class to store the information associated with a single data point (date and value)"""
@@ -47,6 +51,39 @@ def disp_dir_contents(path):
         except PermissionError:
             pass
 
+
+def disp_drive_contents():
+    disp_dir_contents(drive_dir)
+
+
+def parseFile(filename):
+    """
+    Open filename (full path) and return an array of DataPoints for all data in the file
+    """
+    file = open(filename)
+    datapoints = []
+    # firstLine = file.readline();
+    # if (not "MONTH" in firstLine):
+    #    return datapoints
+    try:
+        for line in file:
+            if "MONTH" in line:
+                continue
+            try:
+                [lineNo, id, year, month, day, time, voltage] = line.strip().replace("\"", '').split(",")
+            except ValueError:
+                file.close()
+                return []
+            [hour, minute, second] = time.split(":")
+            datapoint = DataPoint(id, year, month, day, hour, minute, second, voltage)
+            datapoints.append(datapoint)
+        file.close()
+    except:
+        file.close()
+        return []
+    return datapoints
+
+
 def scan_directory(path):
     global last_scanned_files
     new_files = False
@@ -75,53 +112,29 @@ def scan_directory(path):
     last_scanned_files = this_scan_files
     return new_files
 
-def disp_drive_contents():
-    disp_dir_contents(drive_dir)
-
-def parseFile(filename):
-    """
-    Open filename (full path) and return an array of DataPoints for all data in the file
-    """
-    file = open(filename)
-    datapoints = []
-    #firstLine = file.readline();
-    #if (not "MONTH" in firstLine):
-    #    return datapoints
-    try:
-        for line in file:
-            if "MONTH" in line:
-                continue
-            try:
-                [lineNo, id, year, month, day, time, voltage] = line.strip().replace("\"", '').split(",")
-            except ValueError:
-                file.close()
-                return []
-            [hour, minute, second] = time.split(":")
-            datapoint = DataPoint(id, year, month, day, hour, minute, second, voltage)
-            datapoints.append(datapoint)
-        file.close()
-    except:
-        file.close()
-        return []
-    return datapoints
 
 def sortPoints(datapoints):
     datapoints.sort(key=operator.attrgetter("stationID", "year", "month", "day", "hour", "minute", "second"))
 
-def plotPoints(datapoints, fig = None):
-    if (fig is None):
-        fig = plt.figure()
-    voltages = [point.voltage for point in datapoints]
-    plt.plot(voltages)
-    plt.show()
-    return fig
 
-plt.ion()
-fig = None
-
-while (True):
+def updateGraph(i):
+    global datapoints
     is_change = scan_directory(drive_dir)
+    sortPoints(datapoints)
+    datapoints = datapoints[-NUM_POINTS_TO_DISPLAY:]
+
     if is_change:
-        fig = plotPoints(datapoints, fig)
+        voltages = [point.voltage for point in datapoints]
+        ax1.clear()
+        ax1.plot(voltages)
+        plt.title("Voltage over time")
+        plt.ylabel("Voltage (V)")
+        plt.xticks([])
         print("Updated at", datetime.datetime.now())
-    time.sleep(10)
+
+
+fig = plt.figure()
+ax1 = fig.add_subplot(1, 1, 1)
+
+ani = animation.FuncAnimation(fig, updateGraph, interval=1000)
+plt.show()
