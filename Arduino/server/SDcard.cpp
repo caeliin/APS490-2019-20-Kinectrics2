@@ -34,7 +34,7 @@ void recordSensor() {
   File serverFile = SD.open(fileName, FILE_WRITE); 
 
   if (serverFile) {
-    Serial.print(formattedString);
+    //Serial.println(formattedString);
     serverFile.println(formattedString);
     serverFile.close();
   }
@@ -195,18 +195,18 @@ bool readFileLine(int *year, int *month, int *day, int *hour, int *minute, int *
 void dumpFile(int year) {
   char fileName[9];
   sprintf(fileName, "%4d.txt", year);
-  Serial.print("Opening file.. ");
-  Serial.println(fileName);
+  //Serial.print("Opening file.. ");
+  //Serial.println(fileName);
   serverFile = SD.open(fileName); 
   if (serverFile) {
-    Serial.println("Dumping file contents...");
+    //Serial.println("Dumping file contents...");
     while (serverFile.available()) {
       Serial.write(serverFile.read());
     }
-    Serial.println("\tDone dumping file contents");
+    //Serial.println("\tDone dumping file contents");
     serverFile.close();
   }
   else {
-    Serial.println("Could not open file");
+    //Serial.println("Could not open file");
   }
 }

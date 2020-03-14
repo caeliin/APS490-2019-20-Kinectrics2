@@ -11,6 +11,13 @@ void processBT() {
   if (err) {
     return;
   }
+
+  //debugging purposes - bit errors grr
+  if (!received.containsKey("request")) {
+    String output;
+    serializeJson(received, output);
+    Serial.println(output);
+  }
   
   char *req = received["request"];
   Serial.println(req);
@@ -29,6 +36,11 @@ void processBT() {
   }
   else if (strcmp(req, "END") == 0) {
     BTmodule.write("{\"response\": \"EXIT\"}\n");
+  }
+  else {
+    BTmodule.write("{\"response\": \"ERROR\", \"error\": \"");
+    BTmodule.write(req);
+    BTmodule.write("\"is not a valid request\"}\n");
   }
   return;
 }

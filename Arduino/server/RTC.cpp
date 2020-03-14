@@ -9,7 +9,7 @@ void printTime(Time time) {
   char prettyTime[20];
   sprintf(prettyTime, "%4d-%02d-%02d %02d:%02d:%02d", 
     time.year, time.mon, time.date, time.hour, time.min, time.sec);
-  Serial.print(prettyTime);
+  //Serial.print(prettyTime);
 }
 
 /*
