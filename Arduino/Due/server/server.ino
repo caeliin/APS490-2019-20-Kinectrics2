@@ -53,15 +53,16 @@ void setup() {
   SD.remove("2000.txt");  
   //*/
 
+  nextRun = rtc.getTime();
+  
   //Serial.print("Initializing SD card...");
-
   if (!SD.begin()) {
     Serial.println("Initialization failed!");
     return;
   }
   Serial.println("\tInitialization successful.");
 
-  nextRun = rtc.getTime();
+  
 }
 
 void loop() {

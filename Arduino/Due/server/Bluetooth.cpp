@@ -54,6 +54,7 @@ void dump() {
   char fileName[9];
   
   Serial2.write("{\"response\": \"DATA\", \"data\" : [");
+  boolean isFirstFileRead = true;
   
   for (int file_year = 2000; file_year <= currentYear; file_year++) {
     sprintf(fileName, "%4d.txt", file_year);
@@ -61,6 +62,13 @@ void dump() {
     if (SD.exists(fileName)) {
       //Send the contents of the file over BT
       serverFile = SD.open(fileName); 
+      
+      if (isFirstFileRead) {
+        isFirstFileRead = false;
+      }
+      else {
+        Serial2.write(", ");
+      }
       
       bool first = true; //lists are a pain
       char line[] = "([YYYY, MM, DD, HH, MM, SS], V.VV)";
@@ -94,12 +102,21 @@ void query(int year, int month, int day, int hour, int minute, int second) {
   char fileName[9];
   
   Serial2.write("{\"response\": \"DATA\", \"data\" : [");
+  boolean isFirstFileRead = true;
   
   for (int file_year = year; file_year <= currentYear; file_year++) {
     sprintf(fileName, "%4d.txt", file_year);
     if (SD.exists(fileName)) {
       //Send the contents of the file over BT
       serverFile = SD.open(fileName); 
+
+      //write the comma between entries between files
+      if (isFirstFileRead) {
+        isFirstFileRead = false;
+      }
+      else {
+        Serial2.write(", ");
+      }
       
       bool first = true; //lists are a pain
       char line[] = "([YYYY, MM, DD, HH, MM, SS], V.VV)";
