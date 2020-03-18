@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Capstone_DataCollection</string>
+    <string name="HistoryData">History Data</string>
+    <string name="GetNewData">Get New Data</string>
+    <string name="Station1">Station 1</string>
+    <string name="Station2">Station 2</string>
+    <string name="DataValue1">Data Value 1</string>
+    <string name="DataValue2">Data Value 2</string>
+    <string name="DataValue3">Data Value 3</string>
+    <string name="Refresh">Refresh</string>
+    <string name="Save">Save</string>
+    <string name="Toolbar_title">Main</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
