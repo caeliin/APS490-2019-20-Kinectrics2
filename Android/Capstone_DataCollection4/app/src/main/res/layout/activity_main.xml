@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background3"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="257dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="8dp"
+
+        android:background="@drawable/bottom_border"
+        android:clickable="true"
+        android:drawableLeft="@android:drawable/ic_menu_recent_history"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="bottom|center_vertical|top"
+        android:onClick="getHistoryData"
+        android:text="@string/HistoryData"
+        android:textAllCaps="false"
+        android:textColor="#E2FFFFFF"
+        android:textSize="22sp"
+
+        android:textStyle="italic"
+        android:typeface="sans"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.79" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="257dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/bottom_border"
+        android:clickable="true"
+
+        android:drawableLeft="@android:drawable/ic_menu_add"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="bottom|center_vertical|top"
+        android:onClick="getNewData"
+        android:text="@string/GetNewData"
+        android:textAllCaps="false"
+        android:textColor="#E2FFFFFF"
+        android:textSize="22sp"
+
+        android:textStyle="italic"
+
+        android:typeface="sans"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="316dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="112dp"
+        android:gravity="center"
+        android:text="Automatic Data Collection System"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="normal|italic"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.089" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="326dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="56dp"
+
+        android:text="Kinectrics"
+        android:textColor="#3BE5FF"
+        android:textSize="25sp"
+        app:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="213dp"
+        android:layout_height="143dp"
+        android:layout_marginBottom="32dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/moving2"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

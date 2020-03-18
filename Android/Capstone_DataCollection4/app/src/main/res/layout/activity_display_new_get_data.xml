@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+
+    tools:context=".displayNewGetData">
+
+    <Button
+        android:text="Display All"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnDisplayAll"/>
+
+    <Button
+        android:text="Display by Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDisplayAll"
+        android:id="@+id/btnDisplayByDate"
+
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnFindUnpairedDevices"
+        android:layout_below="@+id/btnDisplayByDate"
+        android:text="Close Connection"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/btnFindUnpairedDevices"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/requestDisplay"/>
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/btnFindUnpairedDevices"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/responseDisplay"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSave"
+        android:layout_below="@+id/requestDisplay"
+        android:text="Save"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
